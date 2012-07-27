@@ -8,7 +8,7 @@ else
     echo "Both numeric values are not equal"
 fi
 
-if [ cat = cat ]
+if [ "cat" = "cat" ]
 then
     echo "Both string values are equal"
 else
