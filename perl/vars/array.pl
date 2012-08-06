@@ -1,19 +1,19 @@
 #!/usr/bin/perl
-use strict;
 #
 #
-
-#Global Variable
 #
-#
-#$firstname = "Billy Bob";
-
-# Local Variales
-my $firstname = "Billy Bob";
-my $lastname = "Smith";
-our $count = 1;
-
-    print "$firstname and $lastname are local variables\n";
-    print "Count is a global variable set to $count\n";
 
 
+my @companies = ("HP","IBM","Dell","Sun","Oracle","VMware","Red Hat");
+
+
+    print "Please choose a company\n";
+    print "$companies[0]\n";
+    print "$companies[1]\n";
+    print "$companies[2]\n";
+    print "$companies[3]\n";
+    print "$companies[4]\n";
+    print "$companies[5]\n";
+    print "This array contains $#companies elements \n";
+
+    print "@companies[0,1,2,3,4,5,6]\n";
