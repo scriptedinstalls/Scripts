@@ -21,4 +21,7 @@ print "$tool : is version : ";
 print $build_tools{"$tool"};
 print "\n";
 
-
+@distros = keys %linux_current_version;
+@versions = values %linux_current_version;
+    print "@distros[0..$#distros]\n";
+    print "@versions[0..$#versions]\n";
