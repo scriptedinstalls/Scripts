@@ -10,26 +10,14 @@ GetDistro
 function GetDistro() {
     GetOSVersion
         if [[ "$os_VENDOR" =~ (Ubuntu) ]]; then
-
-            'Everyone' refers to Ubuntu releases by the code name adjective
-                
-
-                    DISTRO=$os_CODENAME
-                        elif [[ "$os_VENDOR" =~ (Fedora) ]]; then
-
-                            For Fedora, just use 'f' and the release
-                                    
-
-                                        DISTRO="f$os_RELEASE"
-                                            else
-
-                                                Catch-all for now is Vendor + Release + Update
-                                                    
-
-                                                        DISTRO="$os_VENDOR-$os_RELEASE.$os_UPDATE"
-                                                            fi
-                                                                export DISTRO
-                                                            }
+              DISTRO=$os_CODENAME
+        elif [[ "$os_VENDOR" =~ (Fedora) ]]; then
+              DISTRO="f$os_RELEASE"
+        else
+              DISTRO="$os_VENDOR-$os_RELEASE.$os_UPDATE"
+        fi
+             export DISTRO
+}
 
 
 
