@@ -53,6 +53,7 @@ GetOSVersion() {
 
 
 function GetDistro() {
+    GetOSVersion
         if [[ "$os_VENDOR" =~ (Ubuntu) ]]; then
               DISTRO=$os_CODENAME
         elif [[ "$os_VENDOR" =~ (Fedora) ]]; then
@@ -75,3 +76,9 @@ if [[ ! ${DISTRO} =~ (oneiric|precise|quantal|f16|f17) ]]; then
                                 fi
 
 GetDistro
+
+
+
+
+
+
