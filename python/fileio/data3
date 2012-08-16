@@ -1,0 +1,244 @@
+Aug 13 09:17:01 busybox CRON[18252]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 13 09:17:01 busybox CRON[18252]: pam_unix(cron:session): session closed for user root
+Aug 13 10:17:01 busybox CRON[30273]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 13 10:17:01 busybox CRON[30273]: pam_unix(cron:session): session closed for user root
+Aug 13 11:17:01 busybox CRON[30552]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 13 11:17:01 busybox CRON[30552]: pam_unix(cron:session): session closed for user root
+Aug 13 11:53:23 busybox gnome-screensaver-dialog: gkr-pam: unlocked login keyring
+Aug 13 12:02:32 busybox sudo:   jknott : TTY=pts/2 ; PWD=/home/jknott ; USER=root ; COMMAND=/usr/bin/apt-get install unrar-free
+Aug 13 12:02:32 busybox sudo: pam_unix(sudo:session): session opened for user root by jknott(uid=1000)
+Aug 13 12:02:37 busybox sudo: pam_unix(sudo:session): session closed for user root
+Aug 13 12:13:41 busybox sudo:   jknott : TTY=pts/2 ; PWD=/home/jknott ; USER=root ; COMMAND=/usr/bin/apt-get install xchm
+Aug 13 12:13:41 busybox sudo: pam_unix(sudo:session): session opened for user root by jknott(uid=1000)
+Aug 13 12:14:00 busybox sudo: pam_unix(sudo:session): session closed for user root
+Aug 13 12:17:01 busybox CRON[31921]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 13 12:17:01 busybox CRON[31921]: pam_unix(cron:session): session closed for user root
+Aug 13 13:17:01 busybox CRON[32271]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 13 13:17:01 busybox CRON[32271]: pam_unix(cron:session): session closed for user root
+Aug 13 14:17:01 busybox CRON[32662]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 13 14:17:01 busybox CRON[32662]: pam_unix(cron:session): session closed for user root
+Aug 13 15:17:01 busybox CRON[536]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 13 15:17:01 busybox CRON[536]: pam_unix(cron:session): session closed for user root
+Aug 13 15:56:52 busybox polkitd(authority=local): Unregistered Authentication Agent for unix-session:/org/freedesktop/ConsoleKit/Session2 (system bus name :1.51, object path /org/gnome/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+Aug 14 06:12:22 busybox lightdm: pam_unix(lightdm:session): session opened for user lightdm by (uid=0)
+Aug 14 06:12:22 busybox lightdm: pam_ck_connector(lightdm:session): nox11 mode, ignoring PAM_TTY :0
+Aug 14 06:12:29 busybox lightdm: pam_succeed_if(lightdm:auth): requirement "user ingroup nopasswdlogin" not met by user "jknott"
+Aug 14 06:12:29 busybox dbus[840]: [system] Rejected send message, 2 matched rules; type="method_call", sender=":1.25" (uid=104 pid=1642 comm="/usr/lib/indicator-datetime/indicator-datetime-ser") interface="org.freedesktop.DBus.Properties" member="GetAll" error name="(unset)" requested_reply="0" destination=":1.16" (uid=0 pid=1390 comm="/usr/sbin/console-kit-daemon --no-daemon ")
+Aug 14 06:12:32 busybox dbus[840]: [system] Rejected send message, 2 matched rules; type="method_call", sender=":1.37" (uid=104 pid=1688 comm="/usr/lib/indicator-datetime/indicator-datetime-ser") interface="org.freedesktop.DBus.Properties" member="GetAll" error name="(unset)" requested_reply="0" destination=":1.16" (uid=0 pid=1390 comm="/usr/sbin/console-kit-daemon --no-daemon ")
+Aug 14 06:14:08 busybox lightdm: pam_unix(lightdm:session): session closed for user lightdm
+Aug 14 06:14:08 busybox lightdm: pam_unix(lightdm:session): session opened for user jknott by (uid=0)
+Aug 14 06:14:08 busybox lightdm: pam_ck_connector(lightdm:session): nox11 mode, ignoring PAM_TTY :0
+Aug 14 06:14:13 busybox polkitd(authority=local): Registered Authentication Agent for unix-session:/org/freedesktop/ConsoleKit/Session2 (system bus name :1.53 [/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1], object path /org/gnome/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+Aug 14 06:17:01 busybox CRON[2179]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 06:17:01 busybox CRON[2179]: pam_unix(cron:session): session closed for user root
+Aug 14 06:25:01 busybox CRON[2253]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 06:25:01 busybox CRON[2253]: pam_unix(cron:session): session closed for user root
+Aug 14 06:54:22 busybox polkitd(authority=local): Unregistered Authentication Agent for unix-session:/org/freedesktop/ConsoleKit/Session2 (system bus name :1.53, object path /org/gnome/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+Aug 14 06:54:22 busybox lightdm: pam_unix(lightdm:session): session closed for user jknott
+Aug 14 06:54:24 busybox lightdm: pam_unix(lightdm:session): session opened for user lightdm by (uid=0)
+Aug 14 06:54:24 busybox lightdm: pam_ck_connector(lightdm:session): nox11 mode, ignoring PAM_TTY :0
+Aug 14 06:54:25 busybox lightdm: pam_succeed_if(lightdm:auth): requirement "user ingroup nopasswdlogin" not met by user "jknott"
+Aug 14 06:54:25 busybox dbus[840]: [system] Rejected send message, 2 matched rules; type="method_call", sender=":1.109" (uid=104 pid=4514 comm="/usr/lib/indicator-datetime/indicator-datetime-ser") interface="org.freedesktop.DBus.Properties" member="GetAll" error name="(unset)" requested_reply="0" destination=":1.16" (uid=0 pid=1390 comm="/usr/sbin/console-kit-daemon --no-daemon ")
+Aug 14 06:54:41 busybox lightdm: pam_unix(lightdm:session): session closed for user lightdm
+Aug 14 06:54:41 busybox lightdm: pam_unix(lightdm:session): session opened for user jknott by (uid=0)
+Aug 14 06:54:41 busybox lightdm: pam_ck_connector(lightdm:session): nox11 mode, ignoring PAM_TTY :0
+Aug 14 06:55:12 busybox polkitd(authority=local): Registered Authentication Agent for unix-session:/org/freedesktop/ConsoleKit/Session4 (system bus name :1.127 [/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1], object path /org/gnome/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+Aug 14 06:55:25 busybox dbus[840]: [system] Rejected send message, 2 matched rules; type="method_call", sender=":1.132" (uid=1000 pid=4758 comm="/usr/lib/indicator-datetime/indicator-datetime-ser") interface="org.freedesktop.DBus.Properties" member="GetAll" error name="(unset)" requested_reply="0" destination=":1.16" (uid=0 pid=1390 comm="/usr/sbin/console-kit-daemon --no-daemon ")
+Aug 14 06:56:44 busybox polkitd(authority=local): Unregistered Authentication Agent for unix-session:/org/freedesktop/ConsoleKit/Session4 (system bus name :1.127, object path /org/gnome/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+Aug 14 06:56:44 busybox lightdm: pam_unix(lightdm:session): session closed for user jknott
+Aug 14 06:56:46 busybox lightdm: pam_unix(lightdm:session): session opened for user lightdm by (uid=0)
+Aug 14 06:56:46 busybox lightdm: pam_ck_connector(lightdm:session): nox11 mode, ignoring PAM_TTY :0
+Aug 14 06:56:47 busybox lightdm: pam_succeed_if(lightdm:auth): requirement "user ingroup nopasswdlogin" not met by user "jknott"
+Aug 14 06:56:47 busybox dbus[840]: [system] Rejected send message, 2 matched rules; type="method_call", sender=":1.156" (uid=104 pid=5174 comm="/usr/lib/indicator-datetime/indicator-datetime-ser") interface="org.freedesktop.DBus.Properties" member="GetAll" error name="(unset)" requested_reply="0" destination=":1.16" (uid=0 pid=1390 comm="/usr/sbin/console-kit-daemon --no-daemon ")
+Aug 14 06:56:54 busybox lightdm: pam_unix(lightdm:session): session closed for user lightdm
+Aug 14 06:56:54 busybox lightdm: pam_unix(lightdm:session): session opened for user jknott by (uid=0)
+Aug 14 06:56:54 busybox lightdm: pam_ck_connector(lightdm:session): nox11 mode, ignoring PAM_TTY :0
+Aug 14 06:57:05 busybox polkitd(authority=local): Registered Authentication Agent for unix-session:/org/freedesktop/ConsoleKit/Session6 (system bus name :1.170 [/usr/lib/polkit-mate/polkit-mate-authentication-agent-1], object path /org/mate/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+Aug 14 06:57:06 busybox dbus[840]: [system] Rejected send message, 2 matched rules; type="method_call", sender=":1.180" (uid=1000 pid=5329 comm="caja ") interface="org.freedesktop.DBus.Properties" member="GetAll" error name="(unset)" requested_reply="0" destination=":1.16" (uid=0 pid=1390 comm="/usr/sbin/console-kit-daemon --no-daemon ")
+Aug 14 06:58:55 busybox sudo:   jknott : TTY=pts/0 ; PWD=/home/jknott ; USER=root ; COMMAND=/usr/bin/apt-get install aandr
+Aug 14 06:58:55 busybox sudo: pam_unix(sudo:session): session opened for user root by (uid=1000)
+Aug 14 06:58:55 busybox sudo: pam_unix(sudo:session): session closed for user root
+Aug 14 07:00:37 busybox sudo:   jknott : TTY=pts/0 ; PWD=/home/jknott ; USER=root ; COMMAND=/usr/bin/apt-get install xrandr
+Aug 14 07:00:37 busybox sudo: pam_unix(sudo:session): session opened for user root by (uid=1000)
+Aug 14 07:00:38 busybox sudo: pam_unix(sudo:session): session closed for user root
+Aug 14 07:01:30 busybox sudo:   jknott : TTY=pts/0 ; PWD=/home/jknott ; USER=root ; COMMAND=/usr/bin/apt-get install x11-xserver-utils
+Aug 14 07:01:30 busybox sudo: pam_unix(sudo:session): session opened for user root by (uid=1000)
+Aug 14 07:01:31 busybox sudo: pam_unix(sudo:session): session closed for user root
+Aug 14 07:01:51 busybox sudo:   jknott : TTY=pts/0 ; PWD=/home/jknott ; USER=root ; COMMAND=/usr/bin/apt-get install xrandr
+Aug 14 07:01:51 busybox sudo: pam_unix(sudo:session): session opened for user root by (uid=1000)
+Aug 14 07:01:52 busybox sudo: pam_unix(sudo:session): session closed for user root
+Aug 14 07:04:37 busybox polkitd(authority=local): Operator of unix-session:/org/freedesktop/ConsoleKit/Session6 successfully authenticated as unix-user:jknott to gain TEMPORARY authorization for action org.mate.randr.install-system-wide for unix-process:5654:314226 [mate-display-properties] (owned by unix-user:jknott)
+Aug 14 07:04:37 busybox pkexec: pam_unix(polkit-1:session): session opened for user root by (uid=1000)
+Aug 14 07:04:37 busybox pkexec: pam_ck_connector(polkit-1:session): cannot determine display-device
+Aug 14 07:04:37 busybox pkexec[5660]: jknott: Executing command [USER=root] [TTY=unknown] [CWD=/home/jknott] [COMMAND=/usr/sbin/mate-display-properties-install-systemwide /home/jknott/.config/monitors.xml monitors.xml]
+Aug 14 07:04:58 busybox pkexec: pam_unix(polkit-1:session): session opened for user root by (uid=1000)
+Aug 14 07:04:58 busybox pkexec: pam_ck_connector(polkit-1:session): cannot determine display-device
+Aug 14 07:04:58 busybox pkexec[5666]: jknott: Executing command [USER=root] [TTY=unknown] [CWD=/home/jknott] [COMMAND=/usr/sbin/mate-display-properties-install-systemwide /home/jknott/.config/monitors.xml monitors.xml]
+Aug 14 07:05:20 busybox polkitd(authority=local): Operator of unix-session:/org/freedesktop/ConsoleKit/Session6 successfully authenticated as unix-user:jknott to gain TEMPORARY authorization for action org.mate.randr.install-system-wide for unix-process:5675:319254 [mate-display-properties] (owned by unix-user:jknott)
+Aug 14 07:05:20 busybox pkexec: pam_unix(polkit-1:session): session opened for user root by (uid=1000)
+Aug 14 07:05:20 busybox pkexec: pam_ck_connector(polkit-1:session): cannot determine display-device
+Aug 14 07:05:20 busybox pkexec[5680]: jknott: Executing command [USER=root] [TTY=unknown] [CWD=/home/jknott] [COMMAND=/usr/sbin/mate-display-properties-install-systemwide /home/jknott/.config/monitors.xml monitors.xml]
+Aug 14 07:05:41 busybox polkitd(authority=local): Operator of unix-session:/org/freedesktop/ConsoleKit/Session6 successfully authenticated as unix-user:jknott to gain TEMPORARY authorization for action org.mate.randr.install-system-wide for unix-process:5686:321555 [mate-display-properties] (owned by unix-user:jknott)
+Aug 14 07:05:41 busybox pkexec: pam_unix(polkit-1:session): session opened for user root by (uid=1000)
+Aug 14 07:05:41 busybox pkexec: pam_ck_connector(polkit-1:session): cannot determine display-device
+Aug 14 07:05:41 busybox pkexec[5691]: jknott: Executing command [USER=root] [TTY=unknown] [CWD=/home/jknott] [COMMAND=/usr/sbin/mate-display-properties-install-systemwide /home/jknott/.config/monitors.xml monitors.xml]
+Aug 14 07:05:52 busybox lightdm: pam_unix(lightdm:session): session closed for user jknott
+Aug 14 07:05:52 busybox polkitd(authority=local): Unregistered Authentication Agent for unix-session:/org/freedesktop/ConsoleKit/Session6 (system bus name :1.170, object path /org/mate/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+Aug 14 07:05:54 busybox lightdm: pam_unix(lightdm:session): session opened for user lightdm by (uid=0)
+Aug 14 07:05:54 busybox lightdm: pam_ck_connector(lightdm:session): nox11 mode, ignoring PAM_TTY :0
+Aug 14 07:05:55 busybox lightdm: pam_succeed_if(lightdm:auth): requirement "user ingroup nopasswdlogin" not met by user "jknott"
+Aug 14 07:05:55 busybox dbus[840]: [system] Rejected send message, 2 matched rules; type="method_call", sender=":1.203" (uid=104 pid=5797 comm="/usr/lib/indicator-datetime/indicator-datetime-ser") interface="org.freedesktop.DBus.Properties" member="GetAll" error name="(unset)" requested_reply="0" destination=":1.16" (uid=0 pid=1390 comm="/usr/sbin/console-kit-daemon --no-daemon ")
+Aug 14 07:06:00 busybox lightdm: pam_unix(lightdm:session): session closed for user lightdm
+Aug 14 07:06:00 busybox lightdm: pam_unix(lightdm:session): session opened for user jknott by (uid=0)
+Aug 14 07:06:00 busybox lightdm: pam_ck_connector(lightdm:session): nox11 mode, ignoring PAM_TTY :0
+Aug 14 07:06:11 busybox polkitd(authority=local): Registered Authentication Agent for unix-session:/org/freedesktop/ConsoleKit/Session8 (system bus name :1.218 [/usr/lib/polkit-mate/polkit-mate-authentication-agent-1], object path /org/mate/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+Aug 14 07:06:11 busybox dbus[840]: [system] Rejected send message, 2 matched rules; type="method_call", sender=":1.227" (uid=1000 pid=5959 comm="caja ") interface="org.freedesktop.DBus.Properties" member="GetAll" error name="(unset)" requested_reply="0" destination=":1.16" (uid=0 pid=1390 comm="/usr/sbin/console-kit-daemon --no-daemon ")
+Aug 14 07:06:24 busybox lightdm: pam_unix(lightdm:session): session closed for user jknott
+Aug 14 07:06:24 busybox polkitd(authority=local): Unregistered Authentication Agent for unix-session:/org/freedesktop/ConsoleKit/Session8 (system bus name :1.218, object path /org/mate/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8) (disconnected from bus)
+Aug 14 07:06:26 busybox lightdm: pam_unix(lightdm:session): session opened for user lightdm by (uid=0)
+Aug 14 07:06:26 busybox lightdm: pam_ck_connector(lightdm:session): nox11 mode, ignoring PAM_TTY :0
+Aug 14 07:06:27 busybox lightdm: pam_succeed_if(lightdm:auth): requirement "user ingroup nopasswdlogin" not met by user "jknott"
+Aug 14 07:06:27 busybox dbus[840]: [system] Rejected send message, 2 matched rules; type="method_call", sender=":1.239" (uid=104 pid=6189 comm="/usr/lib/indicator-datetime/indicator-datetime-ser") interface="org.freedesktop.DBus.Properties" member="GetAll" error name="(unset)" requested_reply="0" destination=":1.16" (uid=0 pid=1390 comm="/usr/sbin/console-kit-daemon --no-daemon ")
+Aug 14 07:06:35 busybox lightdm: pam_unix(lightdm:session): session closed for user lightdm
+Aug 14 07:06:35 busybox lightdm: pam_unix(lightdm:session): session opened for user jknott by (uid=0)
+Aug 14 07:06:35 busybox lightdm: pam_ck_connector(lightdm:session): nox11 mode, ignoring PAM_TTY :0
+Aug 14 07:06:36 busybox polkitd(authority=local): Registered Authentication Agent for unix-session:/org/freedesktop/ConsoleKit/Session10 (system bus name :1.254 [/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1], object path /org/gnome/PolicyKit1/AuthenticationAgent, locale en_US.UTF-8)
+Aug 14 07:17:01 busybox CRON[6682]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 07:17:01 busybox CRON[6682]: pam_unix(cron:session): session closed for user root
+Aug 14 07:30:01 busybox CRON[6812]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 07:30:01 busybox CRON[6812]: pam_unix(cron:session): session closed for user root
+Aug 14 08:17:01 busybox CRON[7020]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 08:17:01 busybox CRON[7020]: pam_unix(cron:session): session closed for user root
+Aug 14 08:21:12 busybox gnome-keyring-daemon[6258]: unsupported key algorithm in certificate: 1.2.840.10045.2.1
+Aug 14 08:22:06  gnome-keyring-daemon[6258]: last message repeated 9 times
+Aug 14 08:38:49 busybox gnome-screensaver-dialog: gkr-pam: unlocked login keyring
+Aug 14 09:17:01 busybox CRON[7297]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 09:17:01 busybox CRON[7297]: pam_unix(cron:session): session closed for user root
+Aug 14 10:17:01 busybox CRON[7670]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 10:17:01 busybox CRON[7670]: pam_unix(cron:session): session closed for user root
+Aug 14 11:17:01 busybox CRON[7937]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 11:17:01 busybox CRON[7937]: pam_unix(cron:session): session closed for user root
+Aug 14 11:56:02 busybox gnome-screensaver-dialog: gkr-pam: unlocked login keyring
+Aug 14 12:17:01 busybox CRON[8230]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 12:17:01 busybox CRON[8230]: pam_unix(cron:session): session closed for user root
+Aug 14 13:17:01 busybox CRON[8429]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 13:17:01 busybox CRON[8429]: pam_unix(cron:session): session closed for user root
+Aug 14 13:41:11 busybox gnome-screensaver-dialog: gkr-pam: unlocked login keyring
+Aug 14 14:17:01 busybox CRON[8483]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 14:17:01 busybox CRON[8483]: pam_unix(cron:session): session closed for user root
+Aug 14 15:17:01 busybox CRON[8502]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 15:17:01 busybox CRON[8502]: pam_unix(cron:session): session closed for user root
+Aug 14 16:17:01 busybox CRON[8520]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 16:17:01 busybox CRON[8520]: pam_unix(cron:session): session closed for user root
+Aug 14 17:17:01 busybox CRON[8537]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 17:17:01 busybox CRON[8537]: pam_unix(cron:session): session closed for user root
+Aug 14 18:17:01 busybox CRON[8554]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 18:17:01 busybox CRON[8554]: pam_unix(cron:session): session closed for user root
+Aug 14 19:17:01 busybox CRON[8571]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 19:17:01 busybox CRON[8571]: pam_unix(cron:session): session closed for user root
+Aug 14 20:17:01 busybox CRON[8588]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 20:17:01 busybox CRON[8588]: pam_unix(cron:session): session closed for user root
+Aug 14 21:17:01 busybox CRON[8605]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 21:17:01 busybox CRON[8605]: pam_unix(cron:session): session closed for user root
+Aug 14 22:17:01 busybox CRON[8624]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 22:17:01 busybox CRON[8624]: pam_unix(cron:session): session closed for user root
+Aug 14 23:17:01 busybox CRON[8641]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 14 23:17:01 busybox CRON[8641]: pam_unix(cron:session): session closed for user root
+Aug 15 00:17:01 busybox CRON[8659]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 00:17:01 busybox CRON[8659]: pam_unix(cron:session): session closed for user root
+Aug 15 01:17:01 busybox CRON[8676]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 01:17:01 busybox CRON[8676]: pam_unix(cron:session): session closed for user root
+Aug 15 02:17:01 busybox CRON[8694]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 02:17:01 busybox CRON[8694]: pam_unix(cron:session): session closed for user root
+Aug 15 03:17:01 busybox CRON[8712]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 03:17:01 busybox CRON[8712]: pam_unix(cron:session): session closed for user root
+Aug 15 04:17:01 busybox CRON[8729]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 04:17:01 busybox CRON[8729]: pam_unix(cron:session): session closed for user root
+Aug 15 05:17:01 busybox CRON[8745]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 05:17:01 busybox CRON[8745]: pam_unix(cron:session): session closed for user root
+Aug 15 06:17:01 busybox CRON[8762]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 06:17:01 busybox CRON[8762]: pam_unix(cron:session): session closed for user root
+Aug 15 06:25:01 busybox CRON[8766]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 06:25:01 busybox CRON[8766]: pam_unix(cron:session): session closed for user root
+Aug 15 07:17:01 busybox CRON[8781]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 07:17:01 busybox CRON[8781]: pam_unix(cron:session): session closed for user root
+Aug 15 07:30:01 busybox CRON[8787]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 07:30:01 busybox CRON[8787]: pam_unix(cron:session): session closed for user root
+Aug 15 08:05:12 busybox gnome-screensaver-dialog: gkr-pam: unlocked login keyring
+Aug 15 08:17:01 busybox CRON[9149]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 08:17:01 busybox CRON[9149]: pam_unix(cron:session): session closed for user root
+Aug 15 09:17:01 busybox CRON[9257]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 09:17:01 busybox CRON[9257]: pam_unix(cron:session): session closed for user root
+Aug 15 09:38:42 busybox gnome-screensaver-dialog: gkr-pam: unlocked login keyring
+Aug 15 10:17:01 busybox CRON[9367]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 10:17:01 busybox CRON[9367]: pam_unix(cron:session): session closed for user root
+Aug 15 11:17:01 busybox CRON[9657]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 11:17:01 busybox CRON[9657]: pam_unix(cron:session): session closed for user root
+Aug 15 11:38:31 busybox gnome-screensaver-dialog: gkr-pam: unlocked login keyring
+Aug 15 12:17:01 busybox CRON[9828]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 12:17:01 busybox CRON[9828]: pam_unix(cron:session): session closed for user root
+Aug 15 12:43:40 busybox gnome-screensaver-dialog: gkr-pam: unlocked login keyring
+Aug 15 13:17:01 busybox CRON[10013]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 13:17:01 busybox CRON[10013]: pam_unix(cron:session): session closed for user root
+Aug 15 14:05:14 busybox gnome-screensaver-dialog: gkr-pam: unlocked login keyring
+Aug 15 14:17:01 busybox CRON[10144]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 14:17:01 busybox CRON[10144]: pam_unix(cron:session): session closed for user root
+Aug 15 15:03:54 busybox gnome-screensaver-dialog: gkr-pam: unlocked login keyring
+Aug 15 15:17:01 busybox CRON[10309]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 15:17:01 busybox CRON[10309]: pam_unix(cron:session): session closed for user root
+Aug 15 15:28:51 busybox sudo: pam_unix(sudo:auth): authentication failure; logname=jknott uid=1000 euid=0 tty=/dev/pts/2 ruser=jknott rhost=  user=jknott
+Aug 15 15:28:56 busybox sudo:   jknott : TTY=pts/2 ; PWD=/home/jknott/Scripts/bash/conditions ; USER=root ; COMMAND=/usr/bin/apt-get install vim-nox
+Aug 15 15:28:56 busybox sudo: pam_unix(sudo:session): session opened for user root by jknott(uid=1000)
+Aug 15 15:28:56 busybox sudo: pam_unix(sudo:session): session closed for user root
+Aug 15 15:29:03 busybox sudo:   jknott : TTY=pts/2 ; PWD=/home/jknott/Scripts/bash/conditions ; USER=root ; COMMAND=/usr/bin/apt-get install vim
+Aug 15 15:29:03 busybox sudo: pam_unix(sudo:session): session opened for user root by jknott(uid=1000)
+Aug 15 15:29:13 busybox sudo: pam_unix(sudo:session): session closed for user root
+Aug 15 16:17:01 busybox CRON[10610]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 16:17:01 busybox CRON[10610]: pam_unix(cron:session): session closed for user root
+Aug 15 17:17:01 busybox CRON[10631]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 17:17:01 busybox CRON[10631]: pam_unix(cron:session): session closed for user root
+Aug 15 18:17:01 busybox CRON[10649]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 18:17:01 busybox CRON[10649]: pam_unix(cron:session): session closed for user root
+Aug 15 19:17:01 busybox CRON[10667]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 19:17:01 busybox CRON[10667]: pam_unix(cron:session): session closed for user root
+Aug 15 20:17:01 busybox CRON[10683]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 20:17:01 busybox CRON[10683]: pam_unix(cron:session): session closed for user root
+Aug 15 21:17:01 busybox CRON[10700]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 21:17:01 busybox CRON[10700]: pam_unix(cron:session): session closed for user root
+Aug 15 22:17:01 busybox CRON[10718]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 22:17:01 busybox CRON[10718]: pam_unix(cron:session): session closed for user root
+Aug 15 23:17:01 busybox CRON[10737]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 15 23:17:01 busybox CRON[10737]: pam_unix(cron:session): session closed for user root
+Aug 16 00:17:01 busybox CRON[10754]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 00:17:01 busybox CRON[10754]: pam_unix(cron:session): session closed for user root
+Aug 16 01:17:01 busybox CRON[10770]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 01:17:01 busybox CRON[10770]: pam_unix(cron:session): session closed for user root
+Aug 16 02:17:01 busybox CRON[10787]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 02:17:01 busybox CRON[10787]: pam_unix(cron:session): session closed for user root
+Aug 16 03:17:01 busybox CRON[10803]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 03:17:01 busybox CRON[10803]: pam_unix(cron:session): session closed for user root
+Aug 16 04:17:01 busybox CRON[10821]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 04:17:01 busybox CRON[10821]: pam_unix(cron:session): session closed for user root
+Aug 16 05:17:01 busybox CRON[10839]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 05:17:01 busybox CRON[10839]: pam_unix(cron:session): session closed for user root
+Aug 16 05:47:42 busybox gnome-screensaver-dialog: gkr-pam: unlocked login keyring
+Aug 16 06:17:01 busybox CRON[10934]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 06:17:01 busybox CRON[10934]: pam_unix(cron:session): session closed for user root
+Aug 16 06:25:01 busybox CRON[10942]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 06:25:01 busybox CRON[10942]: pam_unix(cron:session): session closed for user root
+Aug 16 07:00:51 busybox gnome-screensaver-dialog: gkr-pam: unlocked login keyring
+Aug 16 07:17:01 busybox CRON[11093]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 07:17:01 busybox CRON[11093]: pam_unix(cron:session): session closed for user root
+Aug 16 07:30:01 busybox CRON[11114]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 07:30:01 busybox CRON[11114]: pam_unix(cron:session): session closed for user root
+Aug 16 08:17:01 busybox CRON[12335]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 08:17:01 busybox CRON[12335]: pam_unix(cron:session): session closed for user root
+Aug 16 09:17:01 busybox CRON[12466]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 09:17:01 busybox CRON[12466]: pam_unix(cron:session): session closed for user root
+Aug 16 09:49:04 busybox gnome-screensaver-dialog: gkr-pam: unlocked login keyring
+Aug 16 10:17:01 busybox CRON[14388]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 10:17:01 busybox CRON[14388]: pam_unix(cron:session): session closed for user root
+Aug 16 11:17:01 busybox CRON[14542]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 11:17:01 busybox CRON[14542]: pam_unix(cron:session): session closed for user root
+Aug 16 12:17:01 busybox CRON[14675]: pam_unix(cron:session): session opened for user root by (uid=0)
+Aug 16 12:17:01 busybox CRON[14675]: pam_unix(cron:session): session closed for user root
