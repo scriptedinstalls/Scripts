@@ -1,0 +1,3 @@
+<?
+echo "My corporate logo";
+?>
