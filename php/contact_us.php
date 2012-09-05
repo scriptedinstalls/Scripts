@@ -9,7 +9,7 @@ $title = "Our first dynamically included site....";
 <html>
     <head><title><? echo $title ?>></title></head>
    <body>
-    <table width="100%">
+    <table width="50%">
         <tr>
             <td>&nbsp;</td>
             <td><? include 'header.php';?> </td>
@@ -41,20 +41,9 @@ $title = "Our first dynamically included site....";
         </td>
         </tr>
         </form></table>
-       
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-        <tr><td>&nbsp;</td></tr>
-
         <tr>
-            <td align = 'center'><? include 'footer.php';?></td>
+            <td>&nbsp;</td>
+            <td><? include 'footer.php';?></td>
             <td>&nbsp;</td>
         </tr>
     
