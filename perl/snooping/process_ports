@@ -1,0 +1,33 @@
+#! /usr/bin/perl
+
+# Process the IANA 'port-numbers' file so that we just
+# have the well-known ports (i.e., < 1024) for the TCP
+# and UDP protocols.  Two new files are created:
+#
+#     well-known-udp  - well-known ports for UDP.
+#     well-known-tcp  - well-known ports for TCP.
+
+open PORTNUMS, 'port-numbers' or die "Ooops: $!";
+
+open PROCESSED_TCP, '>well-known-tcp' or die "Ooops: $!";
+open PROCESSED_UDP, '>well-known-udp' or die "Ooops: $!";
+
+while ($_ = <PORTNUMS>)
+{
+    next if /Unassigned/;
+    next if /Reserved/;
+    next if /^#/;
+
+    next unless m[/(udp|tcp)];
+
+    m[(\d+)/(udp|tcp)];
+    
+    print PROCESSED_TCP $_ if ($1 < 1024) and m[/tcp] ;
+    print PROCESSED_UDP $_ if ($1 < 1024) and m[/udp];
+
+}
+
+close PROCESSED_TCP;
+close PROCESSED_UDP;
+
+close PORTNUMS;

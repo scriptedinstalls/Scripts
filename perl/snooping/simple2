@@ -1,0 +1,22 @@
+#! /usr/bin/perl -w
+  
+use strict;
+use Net::PcapUtils;
+
+sub got_a_packet {
+    print "Got a packet!\n" ;
+}
+
+my $pkt_descriptor = Net::PcapUtils::open;
+  
+if ( !ref( $pkt_descriptor ) )
+{
+    print "Net::PcapUtils::open returned: $pkt_descriptor\n";
+    exit;
+}
+  
+while( 1 )    # i.e., forever, or until "killed" ... 
+{
+    Net::PcapUtils::next( $pkt_descriptor );
+    got_a_packet;
+}

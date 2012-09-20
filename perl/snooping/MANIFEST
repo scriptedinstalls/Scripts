@@ -1,0 +1,25 @@
+This is the code from Chapter 2 of "Programming the Network with Perl"
+by Paul Barry, to be published by John Wiley & Sons.
+
+A list of files and brief description follows:
+
+XtraType.pm - the extra Ethernet frame type constants.
+easier - a snooper example.
+easier2 - another snooper example.
+es1 - EtherSnooping by Ethernet Frame Type.
+es1.2 - EtherSnooping by Ethernet Frame Type (excluding non-II DIX's).
+es2 - EtherSnooping using 'open' and 'next' instead of 'loop'.
+es3.1 - EtherSnooping the busiest Ethernet hosts.
+es3.2 - EtherSnooping statistics for all hosts (including the busiest).
+es4 - A version of 3.2 that displays IP addresses when available.
+es5 - EtherSnooping IP time-to-live values.
+es6 - EtherSnooping by IP Protocol Type values.
+es7 - The TCP Transport EtherSnooper.
+MANIFEST - this file.
+netdb - The 'production' network debugger.
+process_ports - the Perl program to process IANA's well-known ports file.
+simple - A simple example of using 'loop'.
+simple2 - the same thing as 'simple', but with 'open' and 'next'.
+simple3 - processing the parameters to the callback function.
+well-known-tcp - the output from 'process_ports' for TCP.
+well-known-udp - the output from 'process_ports' for UDP.

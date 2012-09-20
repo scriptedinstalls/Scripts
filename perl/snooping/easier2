@@ -1,0 +1,40 @@
+#! /usr/bin/perl -w
+
+	use Net::PcapUtils;
+	use NetPacket::Ethernet qw( :strip );
+	use NetPacket::IP qw( :strip );
+	use NetPacket::TCP;
+	use strict;
+
+	use constant TRUE => 1;
+
+	use constant CAPTURE_FILTER => '(tcp port 8080)'; 
+	use constant CAPTURE_DEVICE => 'eth0';
+	use constant CAPTURE_AMOUNT => 1500;
+
+	my $pkt_descriptor = Net::PcapUtils::open( 
+					FILTER  => CAPTURE_FILTER,
+					DEV     => CAPTURE_DEVICE,
+					SNAPLEN => CAPTURE_AMOUNT
+				);
+
+	if ( !ref( $pkt_descriptor ) )
+	{
+		print "Net::PcapUtils::open returned: $pkt_descriptor\n";
+		exit;
+	}
+  
+	while( TRUE )
+	{
+		my ( $packet, %header ) = Net::PcapUtils::next( $pkt_descriptor );
+
+		process_packet( $packet );
+	}
+
+	sub process_packet {
+		my $packet = shift;
+
+		my $tcp = NetPacket::TCP->decode( ip_strip ( eth_strip ( $packet ) ) );
+
+		print $tcp->{ data };
+	}

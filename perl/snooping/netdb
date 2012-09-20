@@ -1,0 +1,327 @@
+#! /usr/bin/perl -w
+
+#
+# Name:        netdb
+# Description: The Network Debugger.
+# From:        "Programming the Network with Perl", Chapter 2, by Paul Barry.
+#
+  
+use strict;
+
+use Net::PcapUtils;
+
+use NetPacket::Ethernet qw( :strip );
+use NetPacket::IP qw( :strip );
+use NetPacket::UDP;
+use NetPacket::TCP;
+
+use Getopt::Std;
+
+our $num_datagrams = 0;
+
+our ($opt_c, $opt_d, $opt_m, $opt_n);
+our ($opt_p, $opt_s, $opt_u, $opt_v);
+
+our $packet_handler;
+
+sub display_ip_details  {
+    my $ip_obj = shift;
+
+    # warn "display_ip_details called\n";
+
+    print NETDEBUG '- ' x 36, "\n";
+    print NETDEBUG "$ip_obj->{src_ip} -> $ip_obj->{dest_ip}";
+    print NETDEBUG " (id: $ip_obj->{id}, ttl: $ip_obj->{ttl})\n\n";
+
+    $num_datagrams++;
+} 
+
+sub display_udp_details {
+    my $udp_obj = shift;
+
+    # warn "display_udp_details called\n";
+
+    print NETDEBUG "UDP Source: $udp_obj->{src_port} -> ";
+    print NETDEBUG "UDP Destination: $udp_obj->{dest_port}\n";
+    if ($opt_v)
+    {
+        print NETDEBUG "UDP Length: $udp_obj->{len}, ";
+        print NETDEBUG "UDP Checksum: $udp_obj->{cksum}\n";
+    }
+    print NETDEBUG "UDP Data:\n\n$udp_obj->{data}\n";
+}
+
+sub display_tcp_details {
+    my $tcp_obj = shift;
+
+    #  warn "display_tcp_details called\n";
+
+    print NETDEBUG "TCP Source: $tcp_obj->{src_port} -> ";
+    print NETDEBUG "TCP Destination: $tcp_obj->{dest_port}\n";
+    print NETDEBUG "TCP Header Length: $tcp_obj->{hlen}, ";
+    print NETDEBUG "TCP Checksum: $tcp_obj->{cksum}\n";
+    if ($opt_v)
+    {
+        print NETDEBUG "TCP Sequence Number: $tcp_obj->{seqnum}\n";
+        print NETDEBUG "TCP Ack Number:      $tcp_obj->{acknum}\n";
+        print NETDEBUG "TCP Flags:           $tcp_obj->{flags}\n";
+        print NETDEBUG "TCP Window Size:     $tcp_obj->{winsize}\n";
+        print NETDEBUG "TCP Urgent Pointer:  $tcp_obj->{urg}\n";
+        print NETDEBUG "TCP Options:         $tcp_obj->{options}\n";
+        print NETDEBUG "TCP Reserved:        $tcp_obj->{reserved}\n";   
+    }
+    print NETDEBUG "TCP Data:\n\n$tcp_obj->{data}\n";
+}
+
+sub udp {
+    my $udp_datagram_obj = shift;
+
+    # warn "udp called\n";
+
+    if (defined( $opt_p ))
+    {
+        if (($udp_datagram_obj->{src_port} == $opt_p) or 
+                 ($udp_datagram_obj->{dest_port} == $opt_p))
+        {
+            display_udp_details( $udp_datagram_obj );    
+        }
+    }
+    else
+    {
+        display_udp_details( $udp_datagram_obj );
+    }
+}
+
+sub tcp {
+    my $tcp_segment_obj = shift;
+
+    # warn "tcp called\n";
+
+    if (defined( $opt_p ))
+    {
+        if (($tcp_segment_obj->{src_port} == $opt_p) or 
+                 ($tcp_segment_obj->{dest_port} == $opt_p))
+        {
+            display_tcp_details( $tcp_segment_obj );    
+        }
+    }
+    else
+    {
+        display_tcp_details( $tcp_segment_obj );
+    }
+}
+
+sub udp_both_packet {
+    my $ip_obj = shift;
+
+    # warn "udp_both_packet called\n";
+
+    my $udp_datagram = 
+            NetPacket::UDP->decode( $ip_obj->{data} );
+
+    if ( (($ip_obj->{src_ip} eq $opt_s) and 
+                 ($ip_obj->{dest_ip} eq $opt_d)) or
+         (($ip_obj->{src_ip} eq $opt_d) and 
+                 ($ip_obj->{dest_ip} eq $opt_s)) )
+    {
+        display_ip_details( $ip_obj ); 
+        udp( $udp_datagram );
+   }
+}
+
+sub tcp_both_packet {
+    my $ip_obj = shift;
+
+    # warn "tcp_both_packet called\n";
+
+    my $tcp_segment = 
+            NetPacket::TCP->decode( $ip_obj->{data} );
+
+    if ( (($ip_obj->{src_ip} eq $opt_s) and 
+                 ($ip_obj->{dest_ip} eq $opt_d)) or
+         (($ip_obj->{src_ip} eq $opt_d) and 
+                 ($ip_obj->{dest_ip} eq $opt_s)) )
+    {
+        display_ip_details( $ip_obj ); 
+        tcp( $tcp_segment );
+    }
+}
+
+sub udp_single_packet {
+    my $ip_obj = shift;
+
+    # warn "udp_single_packet called\n";
+
+    my $udp_datagram = 
+            NetPacket::UDP->decode( $ip_obj->{data} );
+
+    # warn "\tvalue of src address: $ip_obj->{src_ip}\n";
+    # warn "\tvalue of dest address: $ip_obj->{dest_ip}\n";
+    # warn "\tvalue of option S: $opt_s\n";
+
+    if ( ($ip_obj->{src_ip} eq $opt_s) or 
+                 ($ip_obj->{dest_ip} eq $opt_s) ) 
+    {
+        display_ip_details( $ip_obj ); 
+        udp( $udp_datagram );
+    }
+}
+
+sub tcp_single_packet {
+    my $ip_obj = shift;
+
+    # warn "tcp_single_packet called\n";
+
+    my $tcp_segment = 
+            NetPacket::TCP->decode( $ip_obj->{data} );
+
+    if ( ($ip_obj->{src_ip} eq $opt_s) or 
+                 ($ip_obj->{dest_ip} eq $opt_s) ) 
+    {
+        display_ip_details( $ip_obj ); 
+        tcp( $tcp_segment );
+    }
+}
+
+sub udp_packet {
+    my $ip_obj = shift;
+
+    # warn "udp_packet called\n";
+
+    my $udp_datagram = 
+            NetPacket::UDP->decode( $ip_obj->{data} );
+
+    display_ip_details( $ip_obj ); 
+    udp( $udp_datagram );
+}
+
+sub tcp_packet {
+    my $ip_obj = shift;
+
+    # warn "tcp_packet called\n";
+
+    my $tcp_segment = 
+            NetPacket::TCP->decode( $ip_obj->{data} );
+
+    display_ip_details( $ip_obj ); 
+    tcp( $tcp_segment );
+}
+
+sub got_a_packet {
+    my $packet = shift;
+
+    my $ip_datagram = NetPacket::IP->decode( 
+            NetPacket::Ethernet::eth_strip( $packet ) );
+   
+    &$packet_handler( $ip_datagram );       
+}
+
+sub display_results {
+    print NETDEBUG '- ' x 36, "\n";
+    print NETDEBUG "$num_datagrams datagrams/segments processed.\n\n"; 
+    print NETDEBUG scalar localtime, " - netdebug END run.\n\n";
+}
+
+getopts( 'c:d:nm:p:s:uv' );    
+
+my $minutes = defined( $opt_m ) ? $opt_m : 1;
+my $promisc = defined( $opt_n ) ? 0 : 1;
+
+open NETDEBUG, ">>netdb.log" or 
+    die "NETDEBUG: Could not open log file: $!";
+
+print NETDEBUG scalar localtime, " - netdebug BEGIN run.\n\n";
+
+if ( defined( $opt_s ) and defined( $opt_d ) )
+{
+    if ($opt_u)
+    {
+        $packet_handler = \&udp_both_packet;    
+    }
+    else
+    {
+        $packet_handler = \&tcp_both_packet;    
+    }    
+}
+elsif ( defined( $opt_s ) or defined( $opt_d ) )
+{
+    if ($opt_u)
+    {
+        $packet_handler = \&udp_single_packet;    
+    }
+    else
+    {
+        $packet_handler = \&tcp_single_packet;    
+    }    
+}
+else
+{
+    if ($opt_u)
+    {
+        $packet_handler = \&udp_packet;    
+    }
+    else
+    {
+        $packet_handler = \&tcp_packet;    
+    }    
+}
+
+my $filter = ($opt_u) ? 'udp' : 'tcp';
+
+#warn '$opt_c -> ', $opt_c, "\n" if defined( $opt_c );
+#warn '$opt_d -> ', $opt_d, "\n" if defined( $opt_d );
+#warn '$opt_m -> ', $opt_m, "\n" if defined( $opt_m );
+#warn '$opt_n -> ', $opt_n, "\n" if defined( $opt_n );
+#warn '$opt_p -> ', $opt_p, "\n" if defined( $opt_p );
+#warn '$opt_s -> ', $opt_s, "\n" if defined( $opt_s );
+#warn '$opt_u -> ', $opt_u, "\n" if defined( $opt_u );
+#warn '$opt_v -> ', $opt_v, "\n" if defined( $opt_v );
+
+my $pkt_descriptor = Net::PcapUtils::open( 
+                         FILTER     => $filter, 
+                         SNAPLEN    => 1500, 
+                         PROMISC    => $promisc
+                     );
+
+if ( !ref( $pkt_descriptor ) )
+{ 
+    print "Net::PcapUtils::open returned: $pkt_descriptor\n";
+    exit;
+}
+
+my ( $next_packet, %next_header );
+
+if ( defined( $opt_c ) )
+{
+    while ( $num_datagrams <= $opt_c )
+    {  
+        ( $next_packet, %next_header ) = 
+               Net::PcapUtils::next( $pkt_descriptor );
+        got_a_packet( $next_packet );
+    }
+}
+else
+{
+    $SIG{ALRM} = sub { die; };
+
+    eval 
+    {
+        alarm( ( 60 * $minutes ) + 1 );
+
+        my $now = time;
+        my $then = $now + (60 * $minutes);
+
+        while ( ($now = time) < $then )
+        {  
+            ( $next_packet, %next_header ) = 
+                   Net::PcapUtils::next( $pkt_descriptor );
+            got_a_packet( $next_packet );
+        }
+        alarm(0);
+    };
+    alarm(0);
+}
+  
+display_results;
+
+close NETDEBUG;

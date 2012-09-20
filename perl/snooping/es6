@@ -1,0 +1,77 @@
+#! /usr/bin/perl -w
+
+use strict;
+use Net::PcapUtils;
+use NetPacket::Ethernet qw( :strip );
+use NetPacket::IP qw( :protos ) ;
+
+our %ip_type_totals = ();
+
+our %ip_type_desc = (
+        0   => 'IP',
+        1   => 'ICMP',
+        2   => 'IGMP',
+        4   => 'IP/IP',
+        6   => 'TCP',
+        17  => 'UDP'
+    );
+    
+our $num_datagrams = 0;
+  
+sub got_a_packet {
+    my $packet = shift;
+  
+    my $ip_datagram = NetPacket::IP->decode( 
+            NetPacket::Ethernet::eth_strip( $packet ) );
+                   
+    $ip_type_totals{ $ip_datagram->{proto} }++;
+        
+    $num_datagrams++;
+}
+  
+sub display_results { 
+    print "$num_datagrams datagrams processed.\n\n";
+
+    foreach my $iptype ( sort keys %ip_type_desc )
+    {
+        print "$ip_type_desc{$iptype} generated ";
+        if ( exists $ip_type_totals{$iptype} )
+        {
+            print "$ip_type_totals{$iptype} datagrams.\n"
+        }
+        else
+        {
+            print "no datagrams.\n";
+        }
+    }
+
+    print "\nType Total Statistics:\n\n";
+    foreach my $ip_tot ( sort keys %ip_type_totals )
+    {
+        print "$ip_tot -> $ip_type_totals{$ip_tot}\n";
+    }
+}
+
+my $pkt_descriptor = 
+        Net::PcapUtils::open( FILTER => 'ip' );
+  
+if ( !ref( $pkt_descriptor ) )
+{ 
+    print "Net::PcapUtils::open returned: $pkt_descriptor\n";
+    exit;
+}
+  
+my $minute = 3;  
+my $now = time;
+my $then = $now + (60 * $minute);
+
+my ( $next_packet, %next_header );
+
+while ( ($now = time) < $then )
+{ 
+    ( $next_packet, %next_header ) = 
+           Net::PcapUtils::next( $pkt_descriptor );
+    got_a_packet( $next_packet );
+}
+  
+display_results;
