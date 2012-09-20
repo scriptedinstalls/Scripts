@@ -1,12 +1,13 @@
 #yum install git -y
 
 # Install vim and gvim
- sudo apt-get install vim vim-gnome
+# sudo apt-get install vim vim-gnome
 
- GIT
+
+#GIT
 
  # Install git and gitg repo viewer
- sudo apt-get install git git-doc gitg
+ #sudo apt-get install git git-doc gitg
 
  # Set name and email in gitconfig
 git config --global user.email "jknott@boojookoo.com"
@@ -31,7 +32,7 @@ git config --global color.status.untracked red
 git config --list
 
  # Generate SSH keys (provide a good passphrase when asked)
-ssh-keygen -t rsa -C "jknott@boojookoo.com"
+#ssh-keygen -t rsa -C "jknott@boojookoo.com"
 
  # Add git aliases
  echo "alias gb='git branch'" >> ~/.bashrc
@@ -63,4 +64,10 @@ echo "export GIT_PS1_SHOWSTASHSTATE=1" >> ~/.bashrc
 echo "source ~/.git-completion.sh" >> ~/.bashrc
 
  # Add git info to PS1 (append this to your ~/.bashrc file, not commented)
-echo "PS1='[\[\033[1;34m\]\u\[\033[0m\]@\h \W$(__git_ps1 "(%s)")]\$ '" >> ~/.bashrc
+# add this to bashrc manually
+# PS1='[\[\033[1;34m\]\u\[\033[0m\]@\h \W$(__git_ps1 "(%s)")]\$ '
+#echo "PS1='[\[\033[1;34m\]\u\[\033[0m\]@\h \W$(__git_ps1 "(%s)")]\$ '" >> ~/.bashrc
+
+
+
+
