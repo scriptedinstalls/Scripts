@@ -1,0 +1,80 @@
+#! /usr/bin/perl -w
+
+use integer;
+use strict;
+
+use Net::PcapUtils;
+use NetPacket::Ethernet qw( :strip );
+use NetPacket::IP;
+
+our %ttl_totals = ();
+
+our $num_datagrams = 0;
+
+sub got_a_packet {
+    my $packet = shift;
+
+    my $ip_datagram = NetPacket::IP->decode(
+            NetPacket::Ethernet::eth_strip( $packet ) );
+
+    $ttl_totals{ $ip_datagram->{ttl} }++;
+    
+    $num_datagrams++;
+}
+
+sub display_results {
+    print "$num_datagrams datagrams processed.\n\n";
+
+    my $min_ttl = 256;
+    my $max_ttl = 0;
+    my $average_ttl = 0;
+
+    while ( my ( $ttl_key, $ttl_value ) = each %ttl_totals )
+    {
+        if ( $ttl_key < $min_ttl )
+        {
+            $min_ttl = $ttl_key;
+        }
+        if ( $ttl_key > $max_ttl )
+        {
+            $max_ttl = $ttl_key;
+        }
+        $average_ttl =
+            $average_ttl + ( $ttl_key * $ttl_value );
+    }
+
+    $average_ttl = ( $average_ttl / $num_datagrams );
+
+    print "Minimum TTL value: $min_ttl\n";
+    print "Maximum TTL value: $max_ttl\n";
+    print "Average TTL value: $average_ttl\n\n";
+    print "TTL distribution analysis:\n\n";
+
+    foreach my $ttlkey ( sort {$a <=> $b} keys %ttl_totals )
+    {
+        print "TTL: $ttlkey, ";
+        print "frequency: $ttl_totals{$ttlkey}.\n";
+    }
+}
+
+my $pkt_descriptor = Net::PcapUtils::open( FILTER => 'ip' );
+
+if ( !ref( $pkt_descriptor ) )
+{
+    print "Net::PcapUtils::open returned: $pkt_descriptor\n";
+    exit;
+}
+
+my $minute = 3;
+my $now = time;
+my $then = $now + (60 * $minute);
+my ( $next_packet, %next_header );
+
+while ( ($now = time) < $then )
+{
+    ( $next_packet, %next_header ) = Net::PcapUtils::next( $pkt_descriptor );
+
+    got_a_packet( $next_packet );
+}
+
+display_results;

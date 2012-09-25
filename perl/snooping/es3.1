@@ -1,0 +1,81 @@
+#! /usr/bin/perl -w
+
+use strict;
+use Net::PcapUtils;
+use NetPacket::Ethernet qw( :types );
+use XtraType;
+
+our $num_packets = 0;
+  
+our %src_hosts = ();
+our %dest_hosts = ();
+
+sub got_a_packet {
+    my $packet = shift;
+  
+    my $frame = NetPacket::Ethernet->decode( $packet );
+    
+    $src_hosts{ $frame->{src_mac} }++;
+    $dest_hosts{ $frame->{dest_mac} }++;
+  
+    $num_packets++;
+}
+
+sub display_results { 
+    print "$num_packets frames processed.\n\n";
+
+    my $busiest_mac = 0;
+    my $busiest_count = 0;
+
+    print "The busiest hosts were:\n\n";
+    
+    while ( my ( $host, $count ) = each %src_hosts )
+    {
+        if ( $count > $busiest_count )
+        {
+            $busiest_mac = $host;
+            $busiest_count = $count;
+        }
+    }
+    
+    print "Source: $busiest_mac with ";
+    print "$busiest_count frames\n";
+    
+    $busiest_mac = 0;
+    $busiest_count = 0;
+    
+    while ( my ( $host, $count ) = each %dest_hosts )
+    {
+        if ( $count > $busiest_count )
+        {
+            $busiest_mac = $host;
+            $busiest_count = $count;
+        }
+    }
+    
+    print "Destination: $busiest_mac with ";
+    print "$busiest_count frames\n";
+}    
+
+my $pkt_descriptor = Net::PcapUtils::open;
+  
+if ( !ref( $pkt_descriptor ) )
+{ 
+    print "Net::PcapUtils::open returned: $pkt_descriptor\n";
+    exit;
+}
+  
+my $minute = 3;  
+my $now = time;
+my $then = $now + (60 * $minute);
+
+my ( $next_packet, %next_header );
+
+while ( ($now = time) < $then )
+{ 
+    ( $next_packet, %next_header ) = 
+           Net::PcapUtils::next( $pkt_descriptor );
+    got_a_packet( $next_packet );
+}
+  
+display_results;

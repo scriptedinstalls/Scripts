@@ -1,0 +1,79 @@
+#! /usr/bin/perl -w
+
+use strict;
+
+use Net::PcapUtils;
+use NetPacket::Ethernet qw( :strip );
+use NetPacket::IP qw( :strip ) ;
+use NetPacket::TCP;
+
+our %tcp_proto_totals = ();
+
+our $num_datagrams = 0;
+
+sub got_a_packet {
+    my $packet = shift;
+
+    my $tcp_segment = NetPacket::TCP->decode(
+
+    NetPacket::IP::ip_strip( NetPacket::Ethernet::eth_strip( $packet ) ) );
+
+    if ($tcp_segment->{src_port} < 1024)
+    {
+        $tcp_proto_totals{ $tcp_segment->{src_port} }++;
+    }
+
+    if ($tcp_segment->{dest_port} < 1024)
+    {
+        $tcp_proto_totals{ $tcp_segment->{dest_port} }++;
+    }
+
+    $num_datagrams++;
+}
+
+sub display_results {
+    print "$num_datagrams segments processed.\n\n";
+
+    my %tcp_desc = ();
+
+    open WELLKNOWN_TCP, 'well-known-tcp' or die "Ooops: $!";
+    
+    while ($_ = <WELLKNOWN_TCP>)
+    {
+        chomp;
+        m[(\d+)/tcp];
+        $tcp_desc{$1} = $_;
+    }
+
+    close WELLKNOWN_TCP;
+
+    foreach my $port (sort keys %tcp_proto_totals)
+    {
+        print "Port: $port, ";
+        print "generated $tcp_proto_totals{$port} segments.\n";
+        print "Protocol-port: $tcp_desc{$port}.";
+        print "\n\n";
+    }
+}
+
+my $pkt_descriptor = Net::PcapUtils::open( FILTER => 'tcp', SNAPLEN => 120 );
+
+if ( !ref( $pkt_descriptor ) )
+{
+    print "Net::PcapUtils::open returned: $pkt_descriptor\n";
+    exit;
+}
+
+my $minute = 3;
+my $now = time;
+my $then = $now + (60 * $minute);
+my ( $next_packet, %next_header );
+
+while ( ($now = time) < $then )
+{
+    ( $next_packet, %next_header ) = Net::PcapUtils::next( $pkt_descriptor );
+ 
+   got_a_packet( $next_packet );
+}
+
+display_results;

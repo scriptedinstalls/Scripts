@@ -1,0 +1,52 @@
+#! /usr/bin/perl -w
+
+# Use the correct set of modules.
+use Net::PcapUtils;
+use NetPacket::Ethernet;
+use NetPacket::IP;
+use NetPacket::TCP;
+use strict;
+
+use constant TRUE => 1;
+
+use constant CAPTURE_FILTER => '(dst 149.153.23.51) && (tcp[13] & 2 != 0)'; 
+use constant CAPTURE_DEVICE => 'eth0';
+
+# Open the network card for capturing.
+my $pkt_descriptor = Net::PcapUtils::open( 
+                         FILTER => CAPTURE_FILTER,
+                         DEV    => CAPTURE_DEVICE 
+                     );
+
+# Check that the card "opened" OK.
+if ( !ref( $pkt_descriptor ) )
+{
+    print "Net::PcapUtils::open returned: $pkt_descriptor\n";
+    exit;
+}
+  
+while( TRUE )    # i.e., forever, or until "killed" ... 
+{
+    # Capture a packet from the network card.
+    my ( $packet, %header ) = Net::PcapUtils::next( $pkt_descriptor );
+
+    # Process the captured packet.
+    syn_packets( $packet );
+}
+
+sub syn_packets {
+    my $packet = shift;
+
+    #   Strip ethernet encapsulation of captured packet 
+    my $ether_data = NetPacket::Ethernet::strip($packet);
+
+    #   Decode contents of TCP/IP packet contained within 
+    #   captured ethernet packet
+    my $ip = NetPacket::IP->decode($ether_data);
+    my $tcp = NetPacket::TCP->decode($ip->{'data'});
+
+    #   Print all out where its coming from and where its 
+    #   going to!
+    print $ip->{'src_ip'}, ":", $tcp->{'src_port'}, " -> ",
+          $ip->{'dest_ip'}, ":", $tcp->{'dest_port'}, "\n";
+}

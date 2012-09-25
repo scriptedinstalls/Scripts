@@ -1,0 +1,64 @@
+#! /usr/bin/perl -w
+
+use strict;
+use Net::PcapUtils;
+use NetPacket::Ethernet qw( :types );
+use XtraType;
+
+our $num_packets = 0;
+  
+our %src_hosts = ();
+our %dest_hosts = ();
+
+sub got_a_packet {
+    my $packet = shift;
+  
+    my $frame = NetPacket::Ethernet->decode( $packet );
+  
+    $src_hosts{ $frame->{src_mac} }++;
+    $dest_hosts{ $frame->{dest_mac} }++;
+  
+    $num_packets++;
+}
+
+
+sub display_results { 
+    print "$num_packets frames processed.\n\n";
+
+    print "The host statistics are:\n\nSources:\n\n";
+    
+    foreach my $host (sort keys %src_hosts )
+    {
+        print "Host: $host, Count: $src_hosts{$host}.\n";
+    }
+    
+    print "\nDestinations:\n\n";
+    
+    foreach my $host (sort keys %dest_hosts )
+    {
+        print "Host: $host, Count: $dest_hosts{$host}.\n";
+    }
+}    
+
+my $pkt_descriptor = Net::PcapUtils::open;
+  
+if ( !ref( $pkt_descriptor ) )
+{ 
+    print "Net::PcapUtils::open returned: $pkt_descriptor\n";
+    exit;
+}
+  
+my $minute = 3;  
+my $now = time;
+my $then = $now + (60 * $minute);
+
+my ( $next_packet, %next_header );
+
+while ( ($now = time) < $then )
+{ 
+    ( $next_packet, %next_header ) = 
+           Net::PcapUtils::next( $pkt_descriptor );
+    got_a_packet( $next_packet );
+}
+  
+display_results;
