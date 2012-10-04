@@ -1,6 +1,15 @@
 #!/usr/bin/perl
 #
-
+#my @interesting =
+#                  File::Find::Rule
+#                                  ->file()
+#                                  ->executable()
+#                                  ->size('<1M')
+#                                  ->uid( 6588, 6070 )
+#                                  ->name('*.pl')
+#                                   ->in('.');
+#
+#
 use File::Find::Rule;
 
 my @files_or_dirs = File::Find::Rule->in('.');
