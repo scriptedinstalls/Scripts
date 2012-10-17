@@ -1,0 +1,5 @@
+my $time_re = '([0-2]\d:[0-5]\d:[0-5]\d)';
+my $host_re = '\[([^\]]+)\]';
+my $mess_re = '(.*)';
+/^$time_re\s+$host_re\s+$mess_re$/;
+
