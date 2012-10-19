@@ -3,6 +3,13 @@ package Logger;
 use strict;
 use warnings;
 
+use Exporter;
+use base 'Exporter';
+our @EXPORT = qw(open_log close_log write_log log_level);
+
+
+
+
 my $LEVEL = 1;
 
 sub open_log {
