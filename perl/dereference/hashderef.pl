@@ -40,9 +40,11 @@ my @keys3 = keys %$hash_ref;
 print "@keys3\n";
 
 
+my $format = "%-15s %-7s %-7s %-15s\n";
+printf $format, qw(Name Shirt Hat Position);
 
-foreach my $crewmember (@crew) {
-    printf  $crewmember->{'name'} $crewmember->{'shirt'} $crewmember->{'hat'} $crewmember->{'position'};
+for my $crewmember (@crew) {
+    printf $format, @$crewmember{qw(name shirt hat position)};
 }
 
 
