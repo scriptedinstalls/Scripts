@@ -1,0 +1,58 @@
+     Create a file liinfi in /etc/init.d
+    chmod +x liinfo
+    Add folowing entries
+
+    #!/bin/bash
+
+    ### BEGIN INIT INFO
+    # Provides: liinfo 
+    # Required-Start: $network
+    # Required-Stop:
+    # Default-Start: 3 5
+    # Default-Stop: 0 1 2 6
+    # Description: Set BGInfo like info on your desktop
+    ### END INIT INFO
+
+    /root/bin/liinfo
+
+    Run chkconfig -a liinfo
+
+ 
+Add Crontab Entry to refresh
+
+Optionally, if you want your image to be refreshed every 15 minutes, add a crontab entry as shown:
+
+# crontab -e
+and add
+*/15 * * * * /root/bin/liinfo
+
+and save the file.
+
+
+ Install ImageMagick Utilities
+
+Install ImageMagick utilities. On my SuSe 11 SP1, I used the link given below to get the RPMS. Somehow I did not find them on my SuSe OS DVD but I know that they are available on Fedora image as I use them on my home machine.
+
+wget http://support.ednet.ns.ca/sles/SLE-11-SP1-SDK-x86_64/suse/x86_64/libMagickWand1-6.4.3.6-7.18.x86_64.rpm
+wget http://support.ednet.ns.ca/sles/SLE-11-SP1-SDK-x86_64/suse/x86_64/ImageMagick-6.4.3.6-7.18.x86_64.rpm
+Set a background image
+
+Right click on your Linux desktop and select Change Desktop Background. Select an image of your choice or copy the image to the /usr/share/backgrounds folder. It may be different on other distributions. Make a copy of this image and keep it somewhere so that the script uses the original image.
+
+
+### The following ImageMagick utility generates an image with the 
+### transparent background from the file $BGFILE
+
+cat $BGFILE | \
+convert -font Courier-Bold -pointsize 30 \
+        -background none \
+        -fill white \
+        label:@- $BG 
+
+### This utility combines two images and creates a new image
+
+composite -gravity south $BG $WALL $NEWWALL
+
+
+
+
