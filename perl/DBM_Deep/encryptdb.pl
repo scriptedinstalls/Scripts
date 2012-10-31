@@ -11,7 +11,7 @@
                 'key'             => 'my secre',
                 'keysize' => 8,
                 'cipher'          => 'Blowfish',
-                'iv'              => 'my secre',
+                'iv'              => '12345678',
                 'regenerate_key'  => 0,
                 'padding'         => 'space',
                 'prepend_iv'      => 0
