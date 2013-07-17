@@ -1,16 +1,16 @@
 #yum install git -y
 
 # Install vim and gvim
-# sudo apt-get install vim vim-gnome
+sudo apt-get install vim vim-gnome
 
 
 #GIT
 
  # Install git and gitg repo viewer
- #sudo apt-get install git git-doc gitg
+sudo apt-get install git git-doc gitg
 
  # Set name and email in gitconfig
-git config --global user.email "jknott@boojookoo.com"
+git config --global user.email "githubaccount@tormail.org"
 git config --global github.user JamesKnott
 git config --global github.token a75711c13925bcda947730c3e8d46646
 git config --global user.name "JamesKnott"
@@ -32,7 +32,7 @@ git config --global color.status.untracked red
 git config --list
 
  # Generate SSH keys (provide a good passphrase when asked)
-#ssh-keygen -t rsa -C "jknott@boojookoo.com"
+ssh-keygen -t rsa -C "githubaccount@tormail.org"
 
  # Add git aliases
  echo "alias gb='git branch'" >> ~/.bashrc
@@ -55,19 +55,20 @@ git config --list
 # rename file to .sh and make it a hidden file .git-completion.sh
 
 #clone a copy of git for your bash completion profile.
-
+cd ~/
 git clone git://github.com/gitster/git.git
 mv git/contrib/completion/git-completion.bash ~/.git-completion.sh
 rm -rf ~/git
 echo "export GIT_PS1_SHOWDIRTYSTATE=1" >> ~/.bashrc
 echo "export GIT_PS1_SHOWSTASHSTATE=1" >> ~/.bashrc
 echo "source ~/.git-completion.sh" >> ~/.bashrc
-
+echo "source /etc/bash_completion.d/git" >> ~/.bashrc
+source /etc/bash_completion.d/git
  # Add git info to PS1 (append this to your ~/.bashrc file, not commented)
 # add this to bashrc manually
 # PS1='[\[\033[1;34m\]\u\[\033[0m\]@\h \W$(__git_ps1 "(%s)")]\$ '
-#echo "PS1='[\[\033[1;34m\]\u\[\033[0m\]@\h \W$(__git_ps1 "(%s)")]\$ '" >> ~/.bashrc
-
+echo "PS1='[\[\033[1;34m\]\u\[\033[0m\]@\h \W$(__git_ps1 "(%s)")]\$ '" >> ~/.bashrc
+source ~/.bashrc
 
 
 
